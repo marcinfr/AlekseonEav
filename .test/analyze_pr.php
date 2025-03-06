@@ -18,6 +18,9 @@ $headers = [
 
 // Pobranie zmienionych plików w PR
 $url = "https://api.github.com/repos/$repo/pulls/$prNumber/files";
+
+$url = "https://github.com/Alekseon/magento2-widget-forms/pull/24/files";
+
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
@@ -33,7 +36,7 @@ if (!$files) {
 }
 
 foreach ($files as $file) {
-    if (str_ends_with($file["filename"], ".php")) { // Analizujemy tylko pliki PHP
+    if (preg_match('/\.(php|xml|phtml|js)$/i', $file["filename"])) {
         $fileContent = file_get_contents($file["raw_url"]);
         $changedFiles[] = "File: {$file['filename']}\n$fileContent";
     }
