@@ -33,7 +33,6 @@ if (!$files) {
 }
 
 foreach ($files as $file) {
-    var_dump($file);
     if (str_ends_with($file["filename"], ".php")) { // Analizujemy tylko pliki PHP
         $fileContent = file_get_contents($file["raw_url"]);
         $changedFiles[] = "File: {$file['filename']}\n$fileContent";
