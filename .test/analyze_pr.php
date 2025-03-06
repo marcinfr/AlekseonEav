@@ -62,6 +62,8 @@ $data = [
     ]
 ];
 
+var_dump(json_encode($data));
+
 $ch = curl_init("https://api.openai.com/v1/chat/completions");
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
     "Content-Type: application/json",
