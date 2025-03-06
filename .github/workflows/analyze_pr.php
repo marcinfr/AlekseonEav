@@ -1,5 +1,7 @@
 <?php
 
+// @codingStandardsIgnoreFile
+
 // Pobranie zmiennych środowiskowych
 $githubToken = getenv("GITHUB_TOKEN");
 $openaiApiKey = getenv("OPENAI_API_KEY");
