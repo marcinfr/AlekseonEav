@@ -27,6 +27,10 @@ curl_close($ch);
 $files = json_decode($response, true);
 $changedFiles = [];
 
+if (!$files) {
+    exit 0;
+}
+
 foreach ($files as $file) {
     if (str_ends_with($file["filename"], ".php")) { // Analizujemy tylko pliki PHP
         $fileContent = file_get_contents($file["raw_url"]);
