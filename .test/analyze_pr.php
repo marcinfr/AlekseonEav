@@ -104,7 +104,8 @@ echo "Dodano komentarz do ticketa Jira!";
 
 $headers = [
     "Authorization: token $githubToken",
-    "Accept: application/vnd.github.v3+json"
+    "Accept: application/vnd.github.v3+json",
+    "User-Agent: Analyze PR Application"
 ];
 
 $commentUrl = "https://api.github.com/repos/$repo/issues/$prNumber/comments";
