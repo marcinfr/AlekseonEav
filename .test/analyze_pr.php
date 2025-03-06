@@ -28,7 +28,7 @@ $files = json_decode($response, true);
 $changedFiles = [];
 
 if (!$files) {
-    exit 0;
+    die();
 }
 
 foreach ($files as $file) {
