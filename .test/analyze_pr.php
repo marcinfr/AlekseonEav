@@ -52,7 +52,7 @@ $prompt = "Jesteœ ekspertem od PHP i bezpieczeñstwa aplikacji. Przeanalizuj poni
 
 Podaj konkretne problemy i sposoby ich naprawy.
 
-Zmiany w kodzie:\n\n" . implode("\n\n", $changedFiles);
+Zmiany w kodzie:\n\n";// . implode("\n\n", $changedFiles);
 
 //$prompt = mb_convert_encoding($prompt, 'UTF-8', 'auto');
 
@@ -67,7 +67,7 @@ $data = [
 
 echo '===========';
 
-var_dump(json_encode($data, JSON_UNESCAPED_UNICODE));
+var_dump(json_encode($data));
 
 var_dump(json_last_error());
 
