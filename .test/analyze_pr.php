@@ -12,7 +12,7 @@ $jiraApiToken = getenv("JIRA_API_TOKEN"); // Token API Jira
 
 $headers = [
     "Authorization: token $githubToken",
-    "Accept: application/vnd.github.v3+json"
+    "Accept: application/vnd.github.v3+json",
     "User-Agent: Analyze PR Application"
 ];
 
