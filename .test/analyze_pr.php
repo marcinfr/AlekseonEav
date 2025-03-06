@@ -77,8 +77,6 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $response = curl_exec($ch);
 curl_close($ch);
 
-var_dump($response);
-
 $openaiResponse = json_decode($response, true);
 $reviewComment = $openaiResponse["choices"][0]["message"]["content"] ?? "Brak odpowiedzi z OpenAI.";
 
@@ -118,8 +116,10 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $commentData);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_exec($ch);
+$response = curl_exec($ch);
 curl_close($ch);
+
+var_dump($response);
 
 echo "Dodano komentarz do PR z analizą bezpieczeństwa!";
 
