@@ -1,13 +1,13 @@
 <?php
 
-// Pobranie zmiennych œrodowiskowych
+// Pobranie zmiennych Å›rodowiskowych
 $githubToken = getenv("GITHUB_TOKEN");
 $openaiApiKey = getenv("OPENAI_API_KEY");
 $repo = getenv("GITHUB_REPOSITORY");
 $prNumber = getenv("PR_NUMBER");
 $jiraBaseUrl = getenv("JIRA_BASE_URL"); // np. https://twojprojekt.atlassian.net
 $jiraTicket = getenv("JIRA_TICKET"); // Numer ticketa, np. "PROJ-123"
-$jiraUser = getenv("JIRA_USER"); // E-mail u¿ytkownika Jira
+$jiraUser = getenv("JIRA_USER"); // E-mail uÅ¼ytkownika Jira
 $jiraApiToken = getenv("JIRA_API_TOKEN"); // Token API Jira
 
 $headers = [
@@ -16,7 +16,7 @@ $headers = [
     "User-Agent: Analyze PR Application"
 ];
 
-// Pobranie zmienionych plików w PR
+// Pobranie zmienionych plikÃ³w w PR
 $url = "https://api.github.com/repos/$repo/pulls/$prNumber/files";
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
@@ -40,15 +40,15 @@ foreach ($files as $file) {
 }
 
 if (empty($changedFiles)) {
-    echo "Brak plików PHP do analizy.";
+    echo "Brak plikÃ³w PHP do analizy.";
     exit(0);
 }
 
 // Przygotowanie zapytania do OpenAI
-$prompt = "Jesteœ ekspertem od PHP i bezpieczeñstwa aplikacji. Przeanalizuj poni¿sze zmiany w kodzie pod k¹tem:
-- B³êdów sk³adniowych i logicznych
+$prompt = "JesteÅ› ekspertem od PHP i bezpieczeÅ„stwa aplikacji. Przeanalizuj poniÅ¼sze zmiany w kodzie pod kÄ…tem:
+- BÅ‚Ä™dÃ³w skÅ‚adniowych i logicznych
 - Optymalizacji kodu
-- Potencjalnych podatnoœci: SQL Injection (SQLi), Cross-Site Scripting (XSS), Remote Code Execution (RCE), Insecure File Handling
+- Potencjalnych podatnoÅ›ci: SQL Injection (SQLi), Cross-Site Scripting (XSS), Remote Code Execution (RCE), Insecure File Handling
 
 Podaj konkretne problemy i sposoby ich naprawy.
 
@@ -59,7 +59,7 @@ Zmiany w kodzie:\n\n";// . implode("\n\n", $changedFiles);
 $data = [
     "model" => "gpt-4",
     "messages" => [
-        ["role" => "system", "content" => "Jesteœ ekspertem od PHP i cyberbezpieczeñstwa."],
+        ["role" => "system", "content" => "JesteÅ› ekspertem od PHP i cyberbezpieczeÅ„stwa."],
         ["role" => "user", "content" => $prompt]
     ]
 ];
