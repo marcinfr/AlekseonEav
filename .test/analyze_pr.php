@@ -54,7 +54,7 @@ Podaj konkretne problemy i sposoby ich naprawy.
 
 Zmiany w kodzie:\n\n" . implode("\n\n", $changedFiles);
 
-$prompt = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($prompt));
+$prompt = mb_convert_encoding($prompt, 'UTF-8', 'auto');
 
 $data = [
     "model" => "gpt-4",
