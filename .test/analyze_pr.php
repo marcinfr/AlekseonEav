@@ -10,6 +10,8 @@ $jiraTicket = getenv("JIRA_TICKET"); // Numer ticketa, np. "PROJ-123"
 $jiraUser = getenv("JIRA_USER"); // E-mail u¿ytkownika Jira
 $jiraApiToken = getenv("JIRA_API_TOKEN"); // Token API Jira
 
+var_dump($openaiApiKey);
+
 $headers = [
     "Authorization: token $githubToken",
     "Accept: application/vnd.github.v3+json",
@@ -74,6 +76,8 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 $response = curl_exec($ch);
 curl_close($ch);
+
+var_dump($response);
 
 $openaiResponse = json_decode($response, true);
 $reviewComment = $openaiResponse["choices"][0]["message"]["content"] ?? "Brak odpowiedzi z OpenAI.";
