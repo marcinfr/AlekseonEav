@@ -68,7 +68,11 @@ echo '===========';
 
 var_dump(json_encode($data));
 
+var_dump(json_last_error());
+
 echo '===========';
+
+
 
 $ch = curl_init("https://api.openai.com/v1/chat/completions");
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
