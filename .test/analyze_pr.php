@@ -102,4 +102,25 @@ curl_close($ch);
 echo "Dodano komentarz do ticketa Jira!";
 **/
 
+// Dodanie komentarza do PR
+
+$headers = [
+    "Authorization: token $githubToken",
+    "Accept: application/vnd.github.v3+json"
+];
+
+$commentUrl = "https://api.github.com/repos/$repo/issues/$prNumber/comments";
+$commentData = json_encode(["body" => $reviewComment]);
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $commentUrl);
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $commentData);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_exec($ch);
+curl_close($ch);
+
+echo "Dodano komentarz do PR z analizą bezpieczeństwa!";
+
 echo "### Automatyczna analiza kodu w PR #$prNumber\n\n$reviewComment";
