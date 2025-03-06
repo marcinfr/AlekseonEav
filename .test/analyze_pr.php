@@ -52,27 +52,17 @@ $prompt = "Jesteś ekspertem od PHP i bezpieczeństwa aplikacji. Przeanalizuj po
 
 Podaj konkretne problemy i sposoby ich naprawy.
 
-Zmiany w kodzie:\n\n";// . implode("\n\n", $changedFiles);
+Zmiany w kodzie:\n\n" . implode("\n\n", $changedFiles);
 
 //$prompt = mb_convert_encoding($prompt, 'UTF-8', 'auto');
 
 $data = [
-    "model" => "gpt-4",
+    "model" => "gpt-4o-mini",
     "messages" => [
         ["role" => "system", "content" => "Jesteś ekspertem od PHP i cyberbezpieczeństwa."],
         ["role" => "user", "content" => $prompt]
     ]
 ];
-
-
-echo '===========';
-
-var_dump(json_encode($data));
-
-var_dump(json_last_error());
-
-echo '===========';
-
 
 
 $ch = curl_init("https://api.openai.com/v1/chat/completions");
