@@ -45,7 +45,14 @@ if (empty($changedFiles)) {
 }
 
 // Przygotowanie zapytania do OpenAI
-$prompt =  implode("\n\n", $changedFiles);
+$prompt = "Jesteœ ekspertem od PHP i bezpieczeñstwa aplikacji. Przeanalizuj poni¿sze zmiany w kodzie pod k¹tem:
+- B³êdów sk³adniowych i logicznych
+- Optymalizacji kodu
+- Potencjalnych podatnoœci: SQL Injection (SQLi), Cross-Site Scripting (XSS), Remote Code Execution (RCE), Insecure File Handling
+
+Podaj konkretne problemy i sposoby ich naprawy.
+
+Zmiany w kodzie:\n\n" . implode("\n\n", $changedFiles);
 
 //$prompt = mb_convert_encoding($prompt, 'UTF-8', 'auto');
 
@@ -60,7 +67,7 @@ $data = [
 
 echo '===========';
 
-var_dump(json_encode($data));
+var_dump(json_encode($data, JSON_UNESCAPED_UNICODE));
 
 var_dump(json_last_error());
 
