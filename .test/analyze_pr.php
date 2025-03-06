@@ -10,6 +10,7 @@ $jiraTicket = getenv("JIRA_TICKET"); // Numer ticketa, np. "PROJ-123"
 $jiraUser = getenv("JIRA_USER"); // E-mail u¿ytkownika Jira
 $jiraApiToken = getenv("JIRA_API_TOKEN"); // Token API Jira
 
+
 var_dump($openaiApiKey);
 
 $headers = [
@@ -31,8 +32,7 @@ $files = json_decode($response, true);
 $changedFiles = [];
 
 if (!$files) {
-    var_dump($response);
-    die("!");
+    $files = [];
 }
 
 foreach ($files as $file) {
